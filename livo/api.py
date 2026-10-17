@@ -266,11 +266,13 @@ class Handler(base.Handler):
         if not parsed.path.startswith('/api/'):
             from urllib.parse import unquote
             path = unquote(parsed.path)
-            name = {'/': 'index.html', '/about': 'about.html', '/about/': 'about.html'}.get(path, path.lstrip('/'))
+            name = {'/': 'index.html', '/about': 'about.html', '/about/': 'about.html', '/claude': 'index.html'}.get(path, path.lstrip('/'))
             target = (base.ROOT / name).resolve()
             if not target.is_relative_to(base.ROOT) or any(part.startswith('.') for part in name.split('/')) or target.suffix not in {'.html', '.css', '.js', '.svg', '.woff2', '.txt', '.png', '.webmanifest'} or not target.is_file():
                 raise base.APIError(404, '没有找到这个页面。')
             content = target.read_bytes()
+            if path == '/claude':
+                content = content.replace(b'</head>', b'<meta name="robots" content="noindex,nofollow"><link rel="stylesheet" href="claude-preview.css?v=1"></head>', 1)
             self.headers_out(200, base.mimetypes.guess_type(str(target))[0] or 'application/octet-stream', len(content))
             if not head:
                 self.wfile.write(content)

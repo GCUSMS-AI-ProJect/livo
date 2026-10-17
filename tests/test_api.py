@@ -273,5 +273,17 @@ class LivoChecks(unittest.TestCase):
         for path in ('/../server.py', '/%2e%2e/server.py', '/.env', '/var/checkin.sqlite3', '/fonts/../../server.py'):
             self.assertEqual(self.request(path)[0], 404, path)
 
+    def test_14_claude_preview_is_separate_from_default(self):
+        status, current, _ = self.request('/', raw=True)
+        self.assertEqual(status, 200)
+        status, preview, _ = self.request('/claude', raw=True)
+        self.assertEqual(status, 200)
+        self.assertNotIn(b'claude-preview.css', current)
+        self.assertIn(b'claude-preview.css?v=1', preview)
+        self.assertIn(b'noindex,nofollow', preview)
+        injection = b'<meta name="robots" content="noindex,nofollow"><link rel="stylesheet" href="claude-preview.css?v=1">'
+        self.assertEqual(preview.replace(injection, b'', 1), current)
+        self.assertEqual(self.request('/claude-preview.css', raw=True)[0], 200)
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

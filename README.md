@@ -4,6 +4,8 @@
 
 体验：<https://livo.workstudioai.top/> · 介绍：<https://livo.workstudioai.top/about>
 
+手机界面的 Claude 设计预览：<https://livo.workstudioai.top/claude>，登录后点击「我的」。[预览说明与截图](docs/claude-preview/README.md)。
+
 ![Livo 介绍页](docs/screenshots/介绍页-桌面.png)
 
 ## 功能

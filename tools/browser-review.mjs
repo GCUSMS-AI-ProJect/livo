@@ -4,7 +4,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
 const root=new URL('../',import.meta.url).pathname.replace(/\/$/,'');
-const shots=root+'/docs/screenshots';
+const shots=process.argv.find(x=>x.startsWith('--shots='))?.slice(8)??root+'/docs/screenshots';
 await mkdir(shots,{recursive:true});
 const profile=await mkdtemp(join(tmpdir(),'alive-review-'));
 const browser=spawn('/usr/bin/chromium',['--headless','--no-sandbox','--disable-dev-shm-usage','--no-first-run','--no-proxy-server','--password-store=basic','--remote-debugging-address=127.0.0.1','--remote-debugging-port=13491','--user-data-dir='+profile,'about:blank'],{stdio:'ignore'});
