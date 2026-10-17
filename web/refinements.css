@@ -1121,7 +1121,7 @@ body[data-wallpaper] .page:not(#auth-page) .icon-button, body[data-wallpaper] :i
 body[data-wallpaper] :is(.icon-button, .calendar-nav-btn):hover { background: var(--theme-soft); }
 body[data-wallpaper] #checkin-button { background: var(--theme-accent); box-shadow: 0 12px 36px var(--theme-shadow); }
 body[data-wallpaper] #checkin-button:hover:not(:disabled), body[data-wallpaper] #checkin-button.done, body[data-wallpaper] #checkin-button.done:hover { background: var(--theme-hover); box-shadow: 0 14px 40px var(--theme-shadow); }
-body[data-wallpaper] :is(.bottom-nav, .region-range-buttons)::before { background: var(--theme-accent); transition: left 380ms var(--motion-ease), top 380ms var(--motion-ease), width 380ms var(--motion-ease), background-color 400ms ease; }
+body[data-wallpaper] :is(.bottom-nav, .region-range-buttons)::before { background: var(--theme-accent); transition: transform 440ms var(--motion-ease), left 380ms var(--motion-ease), top 380ms var(--motion-ease), width 380ms var(--motion-ease), height 280ms var(--motion-ease), background-color 400ms ease; }
 body[data-wallpaper] .nav-item { color: var(--theme-ink); }
 body[data-wallpaper] .nav-item.active { color: #fff; }
 body[data-wallpaper] .nav-item:not(.active):hover { background: var(--theme-soft); }
