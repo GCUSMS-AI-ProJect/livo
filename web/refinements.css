@@ -1166,3 +1166,54 @@ body[data-wallpaper] :is(.page:not(#auth-page), #password-dialog, #crop-dialog, 
 .profile-actions .icon-button { flex-shrink: 0; }
 .background-option { gap: 0; padding: 6px; }
 @media(max-width: 500px) { .profile-heading { grid-template-columns: 48px minmax(0, 1fr) auto; gap: 10px; } .profile-avatar { width: 48px; height: 48px; } .profile-avatar svg { width: 28px; height: 28px; } .profile-identity .page-title { font-size: 24px; } .profile-identity .user-name { font-size: 17px; } .profile-actions { gap: 4px; } }
+
+/* Records first; appearance is a secondary, smoothly collapsible setting. */
+.records-main .background-settings { margin: 20px 0 0; padding: 18px 22px; }
+.records-main .background-heading { margin-bottom: 0; align-items: center; }
+.records-main .background-heading h3 { flex: 1; }
+#toggle-background { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; min-height: 44px; padding: 0; border: 0; background: transparent; color: var(--theme-ink, #1d1d1f); font: inherit; font-size: 20px; cursor: pointer; }
+#toggle-background svg { flex-shrink: 0; transition: transform 300ms var(--motion-ease); }
+#toggle-background[aria-expanded="true"] svg { transform: rotate(180deg); }
+#background-status:empty { display: none; }
+.background-collapse { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 320ms var(--motion-ease), opacity 240ms ease; }
+.background-collapse.expanded { grid-template-rows: 1fr; opacity: 1; }
+.background-content { min-height: 0; overflow: hidden; }
+.background-content-inner { padding-top: 16px; }
+.records-main .history-section { margin-top: 20px; }
+@media(max-width: 768px) {
+    #records-page .app-header { height: 56px; min-height: 56px; }
+    .records-main { padding: 12px 16px 112px; }
+    .records-main .profile-heading { grid-template-columns: 42px minmax(0,1fr) auto; gap: 10px; margin-bottom: 14px; }
+    .records-main .profile-avatar { width: 42px; height: 42px; }
+    .records-main .profile-avatar svg { width: 24px; height: 24px; }
+    .records-main .profile-identity .page-title { font-size: 23px; margin: 0 0 2px; line-height: 1.25; }
+    .records-main .profile-identity .user-name { font-size: 17px; line-height: 1.35; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .records-main .profile-actions { gap: 2px; }
+    .records-main .profile-actions .icon-button { width: 44px; height: 44px; padding: 10px; }
+    .records-main .stats-grid { gap: 8px; margin-bottom: 12px; }
+    .records-main .stat-card { padding: 12px 4px; border-radius: 20px; }
+    .records-main .stat-value { font-size: 30px; line-height: 1.15; margin-bottom: 5px; }
+    .records-main .stat-label { font-size: 17px; line-height: 1.35; margin: 0; white-space: nowrap; }
+    .records-main .calendar-section { padding: 12px; border-radius: 22px; margin-bottom: 0; }
+    .records-main .calendar-header { gap: 12px; margin-bottom: 6px; }
+    .records-main .calendar-header h3 { font-size: 20px; }
+    .records-main .calendar-grid { gap: 3px; margin-bottom: 10px; }
+    .records-main .calendar-day { height: 34px; min-height: 0; font-size: 17px; border-radius: 10px; padding: 0; }
+    .records-main .calendar-day.header { height: 24px; }
+    .records-main .calendar-day.checked::after { width: 4px; height: 4px; bottom: 2px; }
+    .records-main .calendar-legend { font-size: 17px; gap: 20px; }
+    .records-main #date-detail { padding: 14px; margin-top: 12px; border-radius: 14px; font-size: 17px; }
+    .records-main .history-section { padding: 16px; margin-top: 12px; border-radius: 22px; }
+    .records-main .section-title { font-size: 20px; margin-bottom: 12px; }
+    .records-main .history-list { gap: 8px; }
+    .records-main .history-item { padding: 12px; border-radius: 14px; }
+    .records-main .history-date { margin-bottom: 0; }
+    .records-main .history-note { margin-top: 6px; font-size: 17px; line-height: 1.5; }
+    .records-main .background-settings { padding: 12px 16px; margin-top: 12px; border-radius: 22px; }
+    .records-main .background-options { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; }
+    .records-main .background-swatch { height: 56px; }
+    .records-main .background-upload-hint { font-size: 17px; line-height: 1.5; }
+    .records-main .empty-state { padding: 16px; }
+    .records-main .empty-state svg { width: 36px; height: 36px; margin-bottom: 8px; }
+}
+@media(prefers-reduced-motion: reduce) { .background-collapse, #toggle-background svg { transition: none; } }

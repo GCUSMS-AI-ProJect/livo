@@ -72,6 +72,11 @@ function clearAccount() {
     AppState.backgroundImageVersion = '';
     document.getElementById('crop-dialog').close();
     document.getElementById('share-dialog').close();
+    document.getElementById('toggle-background').setAttribute('aria-expanded', 'false');
+    const backgroundPanel = document.getElementById('background-panel');
+    backgroundPanel.classList.remove('expanded');
+    backgroundPanel.inert = true;
+    backgroundPanel.setAttribute('aria-hidden', 'true');
     syncBackgroundImage();
     AppState.backgroundUpdated = 0;
     backgroundSaveVersion++;
@@ -845,6 +850,15 @@ function applyServerBackground(value, animate = true) {
 }
 
 function initBackgrounds() {
+    const disclosure = document.getElementById('toggle-background');
+    const panel = document.getElementById('background-panel');
+    disclosure.addEventListener('click', () => {
+        const expanded = disclosure.getAttribute('aria-expanded') !== 'true';
+        disclosure.setAttribute('aria-expanded', String(expanded));
+        panel.setAttribute('aria-hidden', String(!expanded));
+        panel.inert = !expanded;
+        panel.classList.toggle('expanded', expanded);
+    });
     document.querySelectorAll('[data-background-choice]').forEach(button => {
         const mark = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
         mark.setAttribute('viewBox', '0 0 24 24');
