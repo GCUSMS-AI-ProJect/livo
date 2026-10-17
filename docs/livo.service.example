@@ -1,0 +1,23 @@
+[Unit]
+Description=Livo daily check-in
+After=network.target
+
+[Service]
+Type=simple
+# Replace paths with your installation directory.
+WorkingDirectory=/opt/livo
+Environment=LIVO_STATE_DIR=/var/lib/livo
+Environment=LIVO_ORIGINS=https://livo.example.com
+ExecStart=/opt/livo/.venv/bin/python /opt/livo/server.py --port 8085
+Restart=on-failure
+RestartSec=3
+UMask=0077
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/livo
+# For a system-wide unit, use a dedicated unprivileged account.
+User=livo
+Group=livo
+
+[Install]
+WantedBy=multi-user.target

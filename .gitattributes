@@ -1,0 +1,3 @@
+# Keep upstream license and reader files verbatim.
+ip2region/** -whitespace
+web/fonts/OFL.txt -whitespace

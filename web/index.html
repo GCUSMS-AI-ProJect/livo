@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="每天点一次，留下一份属于自己的生活记录。Livo，今天，也在。">
+    <meta property="og:title" content="Livo · 今天，也在。">
+    <meta property="og:description" content="不追赶目标，也不比较。点亮今天，留下自己的记录。">
+    <meta property="og:image" content="https://livo.workstudioai.top/promo-cover.png">
+    <title>Livo</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg?v=livo-regions-5">
+    <link rel="stylesheet" href="styles.css?v=livo-mac-fonts-7">
+    <link rel="stylesheet" href="refinements.css?v=livo-promotion-10">
+    <link rel="stylesheet" href="promotion.css?v=1">
+</head>
+<body class="session-loading">
+    <div id="background-current" class="livo-wallpaper" data-background="cloud" aria-hidden="true"></div>
+    <div id="background-next" class="livo-wallpaper" data-background="cloud" aria-hidden="true"></div>
+    <div id="session-loading" role="status" aria-live="polite"><span>Livo</span></div>
+    <noscript>请开启 JavaScript 后使用 Livo。</noscript>
+    <!-- 登录/注册页 -->
+    <div id="auth-page" class="page active">
+        <div class="auth-background">
+        </div>
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="brand-header" id="login-brand" data-heart-level="0">
+                    <svg class="brand-icon life-icon login-heart" width="72" height="72" viewBox="0 0 32 32" aria-hidden="true">
+                        <defs>
+                            <path id="auth-heart-shape" d="M16 28.2c-.3 0-.6-.1-.8-.3-7.8-6.5-11.7-11.2-11.7-15.4C3.5 8.9 5.8 6 9 6c2.1 0 4.2 1.4 5.6 3.1.3.4.8.6 1.4.6s1.1-.2 1.4-.6C18.8 7.4 20.9 6 23 6c3.2 0 5.5 2.9 5.5 6.5 0 4.2-3.9 8.9-11.7 15.4-.2.2-.5.3-.8.3z"/>
+                            <clipPath id="auth-heart-clip"><use href="#auth-heart-shape"/></clipPath>
+                            <linearGradient id="auth-heart-color" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f18498"/><stop offset="1" stop-color="#ec526f"/></linearGradient>
+                        </defs>
+                        <use href="#auth-heart-shape" fill="#1d1d1f"/>
+                        <g clip-path="url(#auth-heart-clip)"><rect class="login-heart-fill" x="0" y="5" width="32" height="24" fill="url(#auth-heart-color)"/></g>
+                        <path class="life-pulse" d="M10 16h3.5l1.8-4.2 2.4 8.4 2-4.2h3.8" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <h1 class="brand-name">Livo</h1>
+                </div>
+
+                <div class="auth-forms">
+                <form id="login-form" class="auth-form active" aria-hidden="false">
+                    <div class="form-group">
+                        <label for="login-email">用户名或邮箱</label>
+                        <input type="text" id="login-email" name="email" required autocomplete="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">密码（至少6位）</label>
+                        <div class="password-input">
+                            <input type="password" id="login-password" name="password" required autocomplete="current-password" minlength="6">
+                            <button type="button" class="toggle-password" aria-label="显示密码" title="显示密码" aria-controls="login-password" aria-pressed="false">
+                                <svg class="password-eye-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M2.5 12s3.4-6.5 9.5-6.5 9.5 6.5 9.5 6.5-3.4 6.5-9.5 6.5S2.5 12 2.5 12Z"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>
+                                <svg class="password-eye-closed" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M3.5 9.5c1.9 3.4 4.8 5.1 8.5 5.1s6.6-1.7 8.5-5.1M5.7 12.3l-1.8 2.5M9.7 14.4l-.6 2.9M14.3 14.4l.6 2.9M18.3 12.3l1.8 2.5"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-error" id="login-error" role="status" aria-live="polite"></div>
+                    <div class="login-action">
+                        <button type="submit" class="btn-primary" aria-describedby="login-hint">登录</button>
+                        <span id="login-hint" role="tooltip">未注册的账号将自动创建，已有账号直接登录。</span>
+                    </div>
+                </form>
+                </div>
+                <a class="intro-link" href="about">了解 Livo</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 今天页 -->
+    <div id="today-page" class="page">
+        <div class="app-background">
+        </div>
+        <header class="app-header">
+            <div class="brand-small">
+                <svg class="life-icon" width="56" height="56" viewBox="0 0 32 32" aria-hidden="true"><path class="life-heart" d="M16 28.2c-.3 0-.6-.1-.8-.3-7.8-6.5-11.7-11.2-11.7-15.4C3.5 8.9 5.8 6 9 6c2.1 0 4.2 1.4 5.6 3.1.3.4.8.6 1.4.6s1.1-.2 1.4-.6C18.8 7.4 20.9 6 23 6c3.2 0 5.5 2.9 5.5 6.5 0 4.2-3.9 8.9-11.7 15.4-.2.2-.5.3-.8.3z" fill="currentColor"/><path class="life-pulse" d="M10 16h3.5l1.8-4.2 2.4 8.4 2-4.2h3.8" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Livo</span>
+            </div>
+        </header>
+
+        <main class="today-main">
+            <div class="today-content">
+                <time class="today-date" id="today-date"></time>
+                <h2 class="today-title" id="today-title">今天，也在。</h2>
+
+                <div class="checkin-container">
+                    <button class="checkin-button" id="checkin-button">
+                        <svg class="life-icon" width="56" height="56" viewBox="0 0 32 32" aria-hidden="true"><path class="life-heart" d="M16 28.2c-.3 0-.6-.1-.8-.3-7.8-6.5-11.7-11.2-11.7-15.4C3.5 8.9 5.8 6 9 6c2.1 0 4.2 1.4 5.6 3.1.3.4.8.6 1.4.6s1.1-.2 1.4-.6C18.8 7.4 20.9 6 23 6c3.2 0 5.5 2.9 5.5 6.5 0 4.2-3.9 8.9-11.7 15.4-.2.2-.5.3-.8.3z" fill="currentColor"/><path class="life-pulse" d="M10 16h3.5l1.8-4.2 2.4 8.4 2-4.2h3.8" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span class="checkin-button-text">我还在</span>
+                    </button>
+                </div>
+
+                <div class="checkin-note-container" id="note-container" style="display: none;">
+                    <label for="checkin-note" class="visually-hidden">留一句话，可选</label>
+                    <input type="text" class="checkin-note-input" id="checkin-note" placeholder="留一句话…" maxlength="100">
+                    <button type="button" class="share-today" id="share-today"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V3m-4 4 4-4 4 4M6 10H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-1"/></svg>分享今日</button>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <!-- 我的记录页 -->
+    <div id="records-page" class="page">
+        <div class="app-background">
+        </div>
+        <header class="app-header">
+            <div class="brand-small">
+                <svg class="life-icon" width="56" height="56" viewBox="0 0 32 32" aria-hidden="true"><path class="life-heart" d="M16 28.2c-.3 0-.6-.1-.8-.3-7.8-6.5-11.7-11.2-11.7-15.4C3.5 8.9 5.8 6 9 6c2.1 0 4.2 1.4 5.6 3.1.3.4.8.6 1.4.6s1.1-.2 1.4-.6C18.8 7.4 20.9 6 23 6c3.2 0 5.5 2.9 5.5 6.5 0 4.2-3.9 8.9-11.7 15.4-.2.2-.5.3-.8.3z" fill="currentColor"/><path class="life-pulse" d="M10 16h3.5l1.8-4.2 2.4 8.4 2-4.2h3.8" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Livo</span>
+            </div>
+        </header>
+
+        <main class="records-main">
+            <div class="profile-heading">
+                <div class="profile-avatar" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></svg></div>
+                <div class="profile-identity"><h2 class="page-title">我的记录</h2><span class="user-name"></span></div>
+                <div class="profile-actions"><button type="button" class="icon-button" id="logout-account" aria-label="退出登录" title="退出登录"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg></button></div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="total-days">0</div>
+                    <div class="stat-label">累计打卡</div>
+                    <div class="stat-unit">天</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="streak-days">0</div>
+                    <div class="stat-label">连续天数</div>
+                    <div class="stat-unit">天</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="month-days">0</div>
+                    <div class="stat-label">本月打卡</div>
+                    <div class="stat-unit">天</div>
+                </div>
+            </div>
+
+            <section class="background-settings" aria-labelledby="background-title">
+                <div class="background-heading"><h3 id="background-title">背景</h3><span id="background-status" role="status" aria-live="polite"></span></div>
+                <div class="background-upload-tools">
+                    <button type="button" class="btn-secondary" id="upload-background"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="8" cy="9" r="1.5"/><path d="m3 16 5-4 4 4 4-5 5 5"/></svg><span>上传图片</span></button>
+                    <button type="button" class="icon-button" id="remove-background" aria-label="移除背景图片" title="移除背景图片" hidden><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7M14 10v7"/></svg></button>
+                    <input type="file" id="background-file" accept="image/jpeg,image/png,image/webp" hidden>
+                </div>
+                <p class="background-upload-hint">JPG、PNG、WebP · 8 MB 内 · 至少 960×540</p>
+                <div class="background-options" role="group" aria-label="选择背景">
+                    <button type="button" class="background-option" data-background-choice="cloud" aria-label="Mist" title="Mist" aria-pressed="true"><span class="background-swatch" data-background="cloud" aria-hidden="true"></span></button>
+                    <button type="button" class="background-option" data-background-choice="dawn" aria-label="Sunrise" title="Sunrise" aria-pressed="false"><span class="background-swatch" data-background="dawn" aria-hidden="true"></span></button>
+                    <button type="button" class="background-option" data-background-choice="forest" aria-label="Forest" title="Forest" aria-pressed="false"><span class="background-swatch" data-background="forest" aria-hidden="true"></span></button>
+                    <button type="button" class="background-option" data-background-choice="sea" aria-label="Ocean" title="Ocean" aria-pressed="false"><span class="background-swatch" data-background="sea" aria-hidden="true"></span></button>
+                    <button type="button" class="background-option" data-background-choice="dusk" aria-label="Lavender" title="Lavender" aria-pressed="false"><span class="background-swatch" data-background="dusk" aria-hidden="true"></span></button>
+                    <button type="button" class="background-option" data-background-choice="paper" aria-label="Paper" title="Paper" aria-pressed="false"><span class="background-swatch" data-background="paper" aria-hidden="true"></span></button>
+                    <button type="button" class="background-option" data-background-choice="custom" aria-label="My image" title="My image" aria-pressed="false" hidden><span class="background-swatch" data-background="custom" aria-hidden="true"></span></button>
+                </div>
+            </section>
+
+            <div class="calendar-section">
+                <div class="calendar-header">
+                    <button class="calendar-nav-btn" id="prev-month" aria-label="上个月">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M12 4L6 10l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <h3 id="calendar-title">2026年10月</h3>
+                    <button class="calendar-nav-btn" id="next-month" aria-label="下个月">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M8 4l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="calendar-grid" id="calendar-grid"></div>
+                <div class="calendar-legend">
+                    <span><span class="legend-dot checked"></span>已打卡</span>
+                    <span><span class="legend-dot today"></span>今天</span>
+                </div>
+            </div>
+
+            <div class="history-section">
+                <h3 class="section-title">最近打卡</h3>
+                <div class="history-list" id="history-list"></div>
+            </div>
+        </main>
+
+    </div>
+
+    <!-- 管理员页 -->
+    <div id="admin-page" class="page">
+        <header class="admin-header">
+            <div class="admin-badge">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <rect x="3" y="8" width="14" height="9" stroke="currentColor" stroke-width="1.5" rx="1"/>
+                    <path d="M7 8V6a3 3 0 1 1 6 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span>管理后台</span>
+            </div>
+            <button class="btn-secondary" id="refresh-admin">刷新</button>
+            <button class="btn-secondary" id="exit-admin">返回</button>
+        </header>
+
+        <main class="admin-main">
+            <h2 class="page-title">产品概览</h2>
+
+            <div class="admin-stats-grid">
+                <div class="admin-stat-card">
+                    <div class="admin-stat-label">注册用户</div>
+                    <div class="admin-stat-value">—</div>
+                    <div class="admin-stat-unit">人</div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-label">今日新增</div>
+                    <div class="admin-stat-value">—</div>
+                    <div class="admin-stat-unit">人</div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="admin-stat-label">今日打卡</div>
+                    <div class="admin-stat-value">—</div>
+                    <div class="admin-stat-unit">人</div>
+                </div>
+                <div class="admin-stat-card highlight">
+                    <div class="admin-stat-label">近 7 日打卡用户</div>
+                    <div class="admin-stat-value">—</div>
+                    <div class="admin-stat-unit">人</div>
+                </div>
+            </div>
+
+            <section class="login-regions">
+  <div class="login-regions-header">
+    <h2>登录来源</h2>
+    <div class="region-range-buttons" role="group" aria-label="时间范围">
+      <button class="region-range-btn active" data-region-days="7" aria-pressed="true">7日</button>
+      <button class="region-range-btn" data-region-days="30" aria-pressed="false">30日</button>
+    </div>
+  </div>
+  <div class="region-stats">
+    <div class="region-stat-item">
+      <div class="region-stat-value" id="region-login-count">0</div>
+      <div class="region-stat-label">登录次数</div>
+    </div>
+    <div class="region-stat-item">
+      <div class="region-stat-value" id="region-user-count">0</div>
+      <div class="region-stat-label">登录用户</div>
+    </div>
+    <div class="region-stat-item">
+      <div class="region-stat-value" id="region-place-count">0</div>
+      <div class="region-stat-label">来源地区</div>
+    </div>
+  </div>
+  <div class="region-content">
+    <div class="region-column">
+      <h3>地区排名</h3>
+      <div id="regions-list" role="status"></div>
+    </div>
+    <div class="region-column">
+      <h3>最近登录</h3>
+      <div id="recent-logins" role="status"></div>
+    </div>
+  </div>
+  <p class="region-footnote">地区为 IP 大致位置</p>
+</section>
+            <div class="chart-section">
+                <h3 class="section-title">打卡人数趋势</h3>
+                <div class="chart-tabs">
+                    <button class="chart-tab active" data-period="7">最近 7 日</button>
+                    <button class="chart-tab" data-period="30">最近 30 日</button>
+                </div>
+                <div class="chart-container">
+                    <canvas id="trend-chart" width="800" height="300"></canvas>
+                </div>
+            </div>
+
+            <div class="users-section">
+                <div class="section-header">
+                    <h3 class="section-title">用户列表（最近活跃）</h3>
+                    <input type="search" class="search-input" id="user-search" placeholder="搜索用户名...">
+                </div>
+                <div class="table-container">
+                    <table class="users-table">
+                        <thead>
+                            <tr>
+                                <th>用户名</th>
+                                <th>注册时间</th>
+                                <th>最近活跃</th>
+                                <th>累计打卡</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+        <nav class="bottom-nav" id="app-nav" aria-label="主导航" hidden>
+            <button class="nav-item active" data-page="today">
+                <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 28.2c-.3 0-.6-.1-.8-.3-7.8-6.5-11.7-11.2-11.7-15.4C3.5 8.9 5.8 6 9 6c2.1 0 4.2 1.4 5.6 3.1.3.4.8.6 1.4.6s1.1-.2 1.4-.6C18.8 7.4 20.9 6 23 6c3.2 0 5.5 2.9 5.5 6.5 0 4.2-3.9 8.9-11.7 15.4-.2.2-.5.3-.8.3z" stroke="currentColor" stroke-width="1.8"/><path d="M10 16h3.5l1.8-4.2 2.4 8.4 2-4.2h3.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>今天</span>
+            </button>
+            <button class="nav-item" data-page="records">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></svg>
+                <span>我的</span>
+            </button>
+        </nav>
+
+    <div id="livo-status" role="status" aria-live="polite" hidden></div>
+    <dialog id="password-dialog" aria-labelledby="password-title">
+        <form id="password-form">
+            <div class="settings-heading"><h2 id="password-title">修改密码</h2><button type="button" class="icon-button" id="close-password" aria-label="关闭" title="关闭"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+            <div class="form-group"><label for="current-password">当前密码</label><input id="current-password" type="password" autocomplete="current-password" required maxlength="128"></div>
+            <div class="form-group"><label for="new-password">新密码（至少6位）</label><input id="new-password" type="password" autocomplete="new-password" required minlength="6" maxlength="128"></div>
+            <div class="form-group"><label for="confirm-password">确认新密码</label><input id="confirm-password" type="password" autocomplete="new-password" required minlength="6" maxlength="128"></div>
+            <div class="form-error" id="password-error" role="status" aria-live="polite"></div>
+            <button type="submit" class="btn-primary">保存</button>
+        </form>
+    </dialog>
+    <dialog id="crop-dialog" aria-labelledby="crop-title">
+        <div class="settings-heading"><h2 id="crop-title">调整背景</h2><button type="button" id="close-crop" class="icon-button" aria-label="关闭裁剪" title="关闭"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+        <p class="crop-instructions">拖动调整位置，缩放选择范围。</p>
+        <div class="crop-frame"><canvas id="background-crop" width="960" height="540" tabindex="0" aria-label="裁剪预览，可拖动或使用方向键调整范围"></canvas><div class="crop-grid" aria-hidden="true"></div></div>
+        <div class="crop-zoom"><label for="crop-zoom">缩放</label><input type="range" id="crop-zoom" min="100" max="300" value="100" aria-label="图片缩放"></div>
+        <p class="crop-size">16:9 · 保存为 1600×900 · 背景随屏幕居中适配</p>
+        <p id="crop-error" role="status" aria-live="polite"></p>
+        <div class="crop-actions"><button type="button" class="btn-secondary" id="cancel-crop">取消</button><button type="button" class="btn-primary" id="save-crop">保存背景</button></div>
+    </dialog>
+    <dialog id="share-dialog" aria-labelledby="share-title">
+        <div class="share-heading"><h2 id="share-title">留住今天</h2><button type="button" class="icon-button" id="close-share" title="关闭" aria-label="关闭分享"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+        <img id="share-preview" alt="今日打卡分享图预览" width="1080" height="1440">
+        <label class="share-note-choice"><input type="checkbox" id="include-note">包含今日留言</label>
+        <p class="share-privacy">图片不含账号和邮箱，留言由你选择分享。</p>
+        <div class="share-actions"><button type="button" id="save-share" class="btn-primary">保存图片</button><button type="button" id="copy-share" class="btn-secondary">复制链接</button></div>
+        <p id="share-status" role="status" aria-live="polite"></p>
+    </dialog>
+    <script src="background-image.js?v=livo-image-6" defer></script>
+    <script src="app.js?v=livo-promotion-10" defer></script>
+    <script src="admin.js?v=livo-release-1" defer></script>
+    <script src="promotion.js?v=1" defer></script>
+</body>
+</html>
